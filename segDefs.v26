@@ -1,0 +1,475 @@
+1 ST REQ NO_RPT		/* 1  Field Separator           */
+4 ST REQ NO_RPT		/* 2  Encoding Characters       */
+15 ST OPT NO_RPT 	/* 3  Sending Application       */
+20 ST OPT NO_RPT 	/* 4  Sending Facility          */
+15 ST OPT NO_RPT 	/* 5  Receiving Application     */
+30 ST OPT NO_RPT  	/* 6  Receiving Facility        */
+19 TS OPT NO_RPT  	/* 7  Date/Time of Message      */
+40 ST OPT NO_RPT  	/* 8  Security                  */
+7 ID REQ NO_RPT   	/* 9  Message Type              */
+20 ST REQ NO_RPT  	/* 10 Message Control ID        */
+1 ID REQ NO_RPT   	/* 11 Processing ID             */
+8 NM REQ NO_RPT   	/* 12 Version ID                */
+15 NM OPT NO_RPT   	/* 13 Sequence Number           */
+180 ST OPT NO_RPT  	/* 14 Continuation Pointer      */
+MSH
+
+2 ID, REQ NO_RPT   	/* 1  Acknowledgement Code      */
+20 ST REQ NO_RPT	/* 2  Message Control ID        */
+80 ST OPT NO_RPT  	/* 3  Text Message              */
+15 NM OPT NO_RPT   	/* 4  Expected Sequence Number  */
+1 ID OPT NO_RPT 	/* 5  Delayed Ack Type          */
+MSA
+
+3 ID REQ NO_RPT		/* 1  Event Type Code           */
+19 TS REQ NO_RPT   	/* 2  Date/Time of Event        */
+19 TS OPT NO_RPT   	/* 3  Date/Time Planned Event   */
+3 ID OPT NO_RPT   	/* 4  Event Reason Code         */
+EVN
+
+16 CK REQ NO_RPT   	/* 1  Prior Patient ID - Int    */
+16 CK OPT NO_RPT   	/* 2  Prior Alt Patient ID      */
+20 ST OPT NO_RPT   	/* 3  Prior Patient Account #   */
+MRG
+
+12 ID REQ NO_RPT  	/* 1  Bed location             */
+1 ID OPT NO_RPT 	/* 2 Bed Status                */
+NPU
+
+4 SI OPT NO_RPT   	/* 1  Set ID - Patient ID       */
+16 CK OPT NO_RPT   	/* 2  Patient ID (External ID)  */
+16 CK REQ NO_RPT   	/* 3  Patient ID (Internal ID)  */
+12 ST OPT NO_RPT   	/* 4  Alternate Patient ID      */
+48 PN REQ NO_RPT   	/* 5  Patient's Name            */
+30 ST OPT NO_RPT   	/* 6  Mother's Maiden Name      */
+8 DT OPT NO_RPT   	/* 7  Date of Birth             */
+1 ID OPT NO_RPT   	/* 8  Sex                       */
+48 PN OPT NO_MAX   	/* 9  Patient Alias             */
+1 ID OPT NO_RPT   	/* 10 Ethnic Group              */
+106 AD OPT NO_RPT   	/* 11 Patient Address           */
+4 ID OPT NO_RPT   	/* 12 County Code               */
+40 TN OPT NO_RPT    	/* 13 Phone Number - Home       */
+40 TN OPT NO_RPT    	/* 14 Phone Number - Business   */
+25 ST OPT NO_RPT   	/* 15 Language - Patient        */
+1 ID OPT NO_RPT   	/* 16 Marital Status            */
+3 ID OPT NO_RPT   	/* 17 Religion                  */
+20 CK OPT NO_RPT   	/* 18 Patient Account Number    */
+16 ST OPT NO_RPT   	/* 19 SSN Number - Patient      */
+25 CM OPT NO_RPT   	/* 20 Drivers License - Patient */
+PID 
+
+4 SI OPT NO_RPT   	/* 1  Set Id                    */
+1 ID REQ NO_RPT   	/* 2  Patient Class             */
+12 ID REQ NO_RPT   	/* 3  Assigned Patient Location */
+2 ID OPT NO_RPT   	/* 4  Admission Type            */
+20 ST OPT NO_RPT   	/* 5  Pre-Admit Number          */
+12 ID OPT NO_RPT   	/* 6  Prior Patient Location    */
+60 CN OPT NO_RPT   	/* 7  Attending Doctor          */
+60 CN OPT NO_RPT   	/* 8  Refering Doctor           */
+60 CN OPT NO_MAX   	/* 9  Consulting Doctor         */
+3 ID OPT NO_RPT   	/* 10 Hospital Service          */
+12 ID OPT NO_RPT   	/* 11 Temporary Location        */
+2 ID OPT NO_RPT   	/* 12 Pre-Admit Test Indicator  */
+2 ID OPT NO_RPT   	/* 13 Re-Admission Indicator    */
+3 ID OPT NO_RPT   	/* 14 Admit Source              */
+2 ID OPT NO_RPT   	/* 15 Ambulatory Status         */
+2 ID OPT NO_RPT   	/* 16 VIP Indicators            */
+60 CN OPT NO_RPT   	/* 17 Admitting Doctor          */
+2 ID OPT NO_RPT   	/* 18 Patient Type              */
+4 NM OPT NO_RPT   	/* 19 Visit Number              */
+11 ID OPT NO_RPT 	/* 20 Financial Class           */
+2 ID OPT NO_RPT   	/* 21 Charge Price Indicator    */
+2 ID OPT NO_RPT   	/* 22 Courtesy Code             */
+2 ID OPT NO_RPT   	/* 23 Credit Rating             */
+2 ID OPT NO_MAX   	/* 24 Contract Code             */
+8 DT OPT NO_MAX   	/* 25 Contract Effective Date   */
+12 NM OPT NO_MAX   	/* 26 Contract Amount           */
+3 NM OPT NO_MAX   	/* 27 Contract Period           */
+2 ID OPT NO_RPT   	/* 28 Interest Code             */
+1 ID OPT NO_RPT   	/* 29 Transfer to Bad Debt Code */
+8 DT OPT NO_RPT   	/* 30 Transfer to Bad Debt Date */
+10 ST OPT NO_RPT   	/* 31 Bad Debt Agency Code      */
+12 NM OPT NO_RPT   	/* 32 Bad Debt Transfer Amount  */
+12 NM OPT NO_RPT   	/* 33 Bad Debt Recovery Amount  */
+1 ID OPT NO_RPT   	/* 34 Delete Account Indicator  */
+8 DT OPT NO_RPT   	/* 35 Delete Account Date       */
+2 ID OPT NO_RPT   	/* 36 Discharge Disposition     */
+2 ID OPT NO_RPT   	/* 37 Discharged to Location    */
+2 ID OPT NO_RPT   	/* 38 Diet Type                 */
+2 ID OPT NO_RPT   	/* 39 Servicing Facility        */
+1 ID OPT NO_RPT   	/* 40 Bed Status                */
+2 ID OPT NO_RPT   	/* 41 Account Status            */
+12 ID OPT NO_RPT   	/* 42 Pending Location          */
+12 ID OPT NO_RPT   	/* 43 Prior Temporary Location  */
+19 TS OPT NO_RPT   	/* 44 Admit Date/Time           */
+19 TS OPT NO_RPT   	/* 45 Discharge Date/Time       */
+12 NM OPT NO_RPT   	/* 46 Current Patient Balance   */
+12 NM OPT NO_RPT   	/* 47 Total Charges             */
+12 NM OPT NO_RPT   	/* 48 Total Adjustments         */
+12 NM OPT NO_RPT   	/* 49 Total Payments            */
+PV1 
+
+4 SI OPT NO_RPT   	/* 1  Set Id                    */
+75 CM OPT NO_RPT   	/* 2  Placer Orders #           */
+75 CM OPT NO_RPT   	/* 3  Fillers Order #           */
+200 CE REQ NO_RPT   	/* 4  Universal Service ID      */
+2 ST OPT NO_RPT   	/* 5  Priority                  */
+19 TS OPT NO_RPT   	/* 6  Requested Date/Time       */
+19 TS REQ NO_RPT   	/* 7  Observation Date/Time     */
+19 TS OPT NO_RPT   	/* 8  Observation End Date/Time */
+20 CQ OPT NO_RPT   	/* 9  Collection Volume         */
+60 CN OPT NO_MAX   	/* 10 Collector Identifier      */
+1 ST OPT NO_RPT   	/* 11 Specimen Action Code      */
+60 CM OPT NO_RPT   	/* 12 Danger Code               */
+300 ST OPT NO_RPT   	/* 13 Relevant Clinical Info.   */
+19 TS OPT NO_RPT   	/* 14 Specimen Rcvd Date/Time   */
+300 CM OPT NO_RPT   	/* 15 Specimen Source           */
+60 CN OPT NO_MAX   	/* 16 Ordering Provider         */
+40 TN OPT 2	   	/* 17 Order Call Back Phone Num */
+60 ST OPT NO_RPT   	/* 18 Placers Field #1          */
+60 ST OPT NO_RPT   	/* 19 Placers Field #2          */
+60 ST OPT NO_RPT   	/* 20 Fillers Field #1          */
+60 ST OPT NO_RPT   	/* 21 Fillers Field #2          */
+19 TS OPT NO_RPT   	/* 22 Results Rpt/Status Chg-dt */
+40 CM OPT NO_RPT   	/* 23 Charge to Practice        */
+10 ID OPT NO_RPT   	/* 24 Diagnostic Serv Sect Id   */
+1 ID OPT NO_RPT   	/* 25 Result Status             */
+200 CE OPT NO_RPT   	/* 26 Linked Results            */
+200 CM OPT NO_MAX   	/* 27 Quantity/Timing           */
+80 CN OPT 5	   	/* 28 Result Copies to          */
+150 CM OPT NO_RPT   	/* 29 Parent Accession #        */
+20 ID OPT NO_RPT   	/* 30 Transportation Mode       */
+300 CE OPT NO_MAX   	/* 31 Reason for Study          */
+60 CN OPT NO_RPT   	/* 32 Prin Result Interpreter   */
+60 CN OPT NO_RPT   	/* 33 Asst Result Interpreter   */
+60 CN OPT NO_RPT   	/* 34 Technician                */
+60 CN OPT NO_RPT   	/* 35 Transcriptionist          */
+19 TS OPT NO_RPT   	/* 36 Scheduled Date/Time       */
+OBR
+
+4 SI OPT NO_RPT   	/* 1  Set Id                    */
+2 ID OPT NO_RPT   	/* 2  Value Type                */
+80 CE REQ NO_RPT   	/* 3  Observation Identifier    */
+20 ST OPT NO_RPT   	/* 4  Observation Sub-Id        */
+65535 ST REQ NO_RPT 	/* 5  Observation Results       */
+20 ST OPT NO_RPT   	/* 6  Units                     */
+60 ST OPT NO_RPT   	/* 7  Reference Range           */
+10 ST OPT 5	   	/* 8  Abnormal Flags            */
+5 NM OPT NO_RPT   	/* 9  Probability               */
+5 ID OPT NO_RPT   	/* 10 Nature of Abnormal Test   */
+2 ID OPT NO_RPT   	/* 11 Observ Result Status      */
+19 TS OPT NO_RPT   	/* 12 Date Last Normal Value    */
+OBX
+
+4 SI REQ NO_RPT   	/* 1  Set ID - Diagnosis        */
+2 ID REQ NO_RPT   	/* 2  Diagnosis Coding Method   */
+8 ID OPT NO_RPT   	/* 3  Diagnosis Code            */
+40 ST OPT NO_RPT   	/* 4  Diagnosis Description     */
+19 TS OPT NO_RPT   	/* 5  Diagnosis Date/Time       */
+2 ID REQ NO_RPT   	/* 6  Diagnosis/DRG Type        */
+4 ST OPT NO_RPT   	/* 7  Major Diagnostic Category */
+4 ID OPT NO_RPT   	/* 8  Diagnostic Related Group  */
+2 ID OPT NO_RPT   	/* 9  DRG Approval Indicator    */
+2 ID OPT NO_RPT   	/* 10 DRG Grouper Review Code   */
+2 ID OPT NO_RPT   	/* 11 Outlier Type              */
+3 NM OPT NO_RPT   	/* 12 Outlier Days              */
+12 NM OPT NO_RPT   	/* 13 Outlier Cost              */
+4 ST OPT NO_RPT   	/* 14 Grouper Version and Type  */
+DG1
+
+4 SI OPT NO_RPT   	/* 1  Set ID - Financial Trans  */
+12 ST OPT NO_RPT   	/* 2  Transaction ID            */
+5 ST OPT NO_RPT   	/* 3  Transaction Batch ID      */
+8 DT REQ NO_RPT   	/* 4  Transaction Date          */
+8 DT OPT NO_RPT   	/* 5  Transaction Posting Date  */
+8 ID REQ NO_RPT   	/* 6  Transaction Type          */
+20 ID REQ NO_RPT   	/* 7  Transaction Code          */
+40 ST OPT NO_RPT   	/* 8  Transaction Description   */
+40 ST OPT NO_RPT   	/* 9  Transaction Desc. - Alt   */
+4 NM OPT NO_RPT   	/* 10 Transaction Quantity      */
+12 NM OPT NO_RPT   	/* 11 Transaction Amount - Ext. */
+12 NM OPT NO_RPT   	/* 12 Transaction Amount - Unit */
+16 ST OPT NO_RPT   	/* 13 Department Code           */
+8 ID OPT NO_RPT   	/* 14 Insurance Plan ID         */
+12 NM OPT NO_RPT   	/* 15 Insurance Amount          */
+12 ST OPT NO_RPT   	/* 16 Patient Location          */
+1 ID OPT NO_RPT   	/* 17 Fee Schedule              */
+2 ID OPT NO_RPT   	/* 18 Patient Type              */
+8 ID OPT NO_RPT   	/* 19 Diagnosis Code            */
+60 CN OPT NO_RPT   	/* 20 Performed by Code         */
+60 CN OPT NO_RPT   	/* 21 Ordered by Code           */
+12 NM OPT NO_RPT   	/* 22 Unit Cost                 */
+FT1 
+
+4 SI REQ NO_RPT   	/* 1  Set ID - Guarantor        */
+20 ID OPT NO_RPT   	/* 2  Guarantor Number          */
+48 PN REQ NO_RPT   	/* 3  Guarantor Name            */
+48 PN OPT NO_RPT   	/* 4  Guarantor Spouse Name     */
+106 AD OPT NO_RPT   	/* 5  Guarantor Address         */
+40 TN OPT NO_RPT   	/* 6  Guarantor Phone - Home    */
+40 TN OPT NO_RPT   	/* 7  Guarantor Phone - Bus.    */
+8 DT OPT NO_RPT   	/* 8  Guarantor Date of Birth   */
+1 ID OPT NO_RPT   	/* 9  Guarantor Sex             */
+2 ID OPT NO_RPT   	/* 10 Guarantor Type            */
+2 ID OPT NO_RPT   	/* 11 Guarantor Relationship    */
+11 ST OPT NO_RPT   	/* 12 Guarantor SSN             */
+8 DT OPT NO_RPT   	/* 13 Guarantor Date - Begin    */
+8 DT OPT NO_RPT   	/* 14 Guarantor Date - End      */
+2 NM OPT NO_RPT   	/* 15 Guarantor Priority        */
+45 ST OPT NO_RPT   	/* 16 Guarantor Employer Name   */
+106 AD OPT NO_RPT   	/* 17 Guarantor Employer Addr   */
+40 TN OPT NO_RPT   	/* 18 Guarantor Employer Phone  */
+20 ST OPT NO_RPT   	/* 19 Guarantor Employee ID #   */
+2 ID OPT NO_RPT   	/* 20 Guarantor Employmt Status */
+GT1
+
+4 SI REQ NO_RPT   	/* 1  Set ID - Insurance        */
+8 ID REQ NO_RPT   	/* 2  Insurance Plan ID         */
+6 ST REQ NO_RPT   	/* 3  Insurance Company ID      */
+45 ST OPT NO_RPT   	/* 4  Insurance Company Name    */
+106 AD OPT NO_RPT   	/* 5  Insurance Company Address */
+48 PN OPT NO_RPT   	/* 6  Insurance Co Contact Pers */
+40 TN OPT NO_RPT   	/* 7  Insurance Co Phone Number */
+12 ST OPT NO_RPT   	/* 8  Group Number              */
+35 ST OPT NO_RPT   	/* 9  Group Name                */
+12 ST OPT NO_RPT   	/* 10 Insured's Group Emp. ID   */
+45 ST OPT NO_RPT   	/* 11 Insured's Group Emp. Name */
+8 DT OPT NO_RPT   	/* 12 Plan Effective Date       */
+8 DT OPT NO_RPT   	/* 13 Plan Expiration Date      */
+55 ST OPT NO_RPT   	/* 14 Authorization Information */
+2 ID OPT NO_RPT   	/* 15 Plan Type                 */
+48 PN OPT NO_RPT   	/* 16 Name of Insured           */
+2 ID OPT NO_RPT   	/* 17 Insured's Relation to Pat */
+8 DT OPT NO_RPT   	/* 18 Insured's Date of Birth   */
+106 AD OPT NO_RPT   	/* 19 Insured's Address         */
+2 ID OPT NO_RPT   	/* 20 Assignment of Benefits    */
+2 ID OPT NO_RPT   	/* 21 Coordination of Benefits  */
+2 ST OPT NO_RPT   	/* 22 Coord. of Ben. Priority   */
+2 ID OPT NO_RPT   	/* 23 Notice of Admission Code  */
+8 DT OPT NO_RPT   	/* 24 Notice of Admission Date  */
+2 ID OPT NO_RPT   	/* 25 Rpt of Eligibility Code   */
+8 DT OPT NO_RPT   	/* 26 Rpt of Eligibility Date   */
+2 ID OPT NO_RPT   	/* 27 Release Information Code  */
+15 ST OPT NO_RPT   	/* 28 Pre-Admit Cert. (PAC)     */
+8 DT OPT NO_RPT   	/* 29 Verification Date         */
+60 CM OPT NO_RPT   	/* 30 Verification By           */
+2 ID OPT NO_RPT   	/* 31 Type of Agreement Code    */
+2 ID OPT NO_RPT   	/* 32 Billing Status            */
+4 NM OPT NO_RPT   	/* 33 Lifetime Reserve Days     */
+4 NM OPT NO_RPT   	/* 34 Delay Before L. R. Day    */
+8 ST OPT NO_RPT   	/* 35 Company Plan Code         */
+15 ST OPT NO_RPT   	/* 36 Policy Number             */
+12 NM OPT NO_RPT   	/* 37 Policy Deductible         */
+12 NM OPT NO_RPT   	/* 38 Policy Limit - Amount     */
+4 NM OPT NO_RPT   	/* 39 Policy Limit - Days       */
+12 NM OPT NO_RPT   	/* 40 Room Rate - Semi-Private  */
+12 NM OPT NO_RPT   	/* 41 Room Rate - Private       */
+1 ID OPT NO_RPT   	/* 42 Insured's Employ Status   */
+1 ID OPT NO_RPT   	/* 43 Insured's Sex             */
+106 AD OPT NO_RPT   	/* 44 Insured's Employer Addr   */
+IN1
+
+4 SI REQ NO_RPT   	/* 1  Set ID - Next of Kin      */
+48 PN OPT NO_RPT   	/* 2  Next of Kin Name          */
+15 ST OPT NO_RPT   	/* 3  Next of Kin Relationship  */
+106 AD OPT NO_RPT   	/* 4  Next of Kin Address       */
+40 TN OPT NO_MAX   	/* 5  Next of Kin Phone Number  */
+NK1
+
+4 SI REQ NO_MAX   	/* 1  Set ID - Procedure        */
+2 ID REQ NO_MAX   	/* 2  Procedure Coding Method   */
+10 ID REQ NO_MAX   	/* 3  Procedure Code            */
+40 ST OPT NO_MAX   	/* 4  Procedure Description     */
+19 TS REQ NO_RPT   	/* 5  Procedure Date/Time       */
+2 ID REQ NO_RPT   	/* 6  Procedure Type            */
+4 NM OPT NO_RPT   	/* 7  Procedure Minutes         */
+60 CN OPT NO_RPT   	/* 8  Anesthesiologist          */
+2 ID OPT NO_RPT   	/* 9  Anesthesia Code           */
+4 NM OPT NO_RPT   	/* 10 Anesthesia Minutes        */
+60 CN OPT NO_RPT   	/* 11 Surgeon                   */
+60 CN OPT NO_RPT   	/* 12 Resident Code             */
+2 ID OPT NO_RPT   	/* 13 Consent Code              */
+PR1 
+
+19 TS OPT NO_RPT	/* 1 Accident date/time         */
+2 ID OPT NO_RPT		/* 2 Accident code		*/
+25 ST OPT NO_RPT	/* 3 Accident Location		*/
+ACC
+
+4 SI OPT NO_RPT   	/* 1  Set ID - UB82             */
+1 ST OPT NO_RPT   	/* 2  Blood Deductible          */
+2 ST OPT NO_RPT   	/* 3  Blood Furn.-Pints of (40) */
+2 ST OPT NO_RPT   	/* 4  Blook Replaced-Pints (41) */
+2 ST OPT NO_RPT   	/* 5  Blood Not Rplcd-Pints(42) */
+2 ST OPT NO_RPT   	/* 6  Co-Insurance Days (25)    */
+2 ID OPT      5   	/* 7  Condition Code            */
+3 ST OPT NO_RPT   	/* 8  Covered Days (23)         */
+3 ST OPT NO_RPT   	/* 9  Non-Covered Days (24)     */
+12 CM OPT     8   	/* 10 Value Amount & Code       */
+2 ST OPT NO_RPT   	/* 11 Number of Grace Days (90) */
+2 ID OPT NO_RPT   	/* 12 Spec. Prog. Indicator(44) */
+1 ID OPT NO_RPT   	/* 13 PSRO/UR Approvl Ind. (87) */
+8 DT OPT NO_RPT   	/* 14 PSRO/UR Aprvd Stay-Fm(88) */
+8 DT OPT NO_RPT   	/* 15 PSRO/UR Aprvd Stay-To(89) */
+20 ID OPT     5   	/* 16 Occurrence (28-32)        */
+2 ID OPT NO_RPT   	/* 17 Occurrence Span (33)      */
+8 DT OPT NO_RPT   	/* 18 Occur Span Start Date(33) */
+8 DT OPT NO_RPT   	/* 19 Occur Span End Date (33)  */
+30 ST OPT NO_RPT   	/* 20 UB-82 Locator 2           */
+7 ST OPT NO_RPT   	/* 21 UB-82 Locator 9           */
+8 ST OPT NO_RPT   	/* 22 UB-82 Locator 27          */
+17 ST OPT NO_RPT   	/* 23 UB-82 Locator 45          */
+UB1
+
+60 ST OPT NO_RPT 	/* */
+ADD
+
+1 ST REQ NO_RPT		/* 1  Batch Field Separator     */
+3 ST REQ NO_RPT   	/* 2  Batch Encoding Characters */
+15 ST OPT NO_RPT   	/* 3  Batch Sending Application */
+20 ST OPT NO_RPT   	/* 4  Batch Sending Facility    */
+15 ST OPT NO_RPT   	/* 5  Batch Rcving Application  */
+20 ST OPT NO_RPT   	/* 6  Batch Receiving Facility  */
+19 TS OPT NO_RPT   	/* 7  Batch Creation Date/Time  */
+40 ST OPT NO_RPT   	/* 8  Batch Security            */
+20 ST OPT NO_RPT   	/* 9  Batch Name/ID/Type        */
+80 ST OPT NO_RPT   	/* 10 Batch Comment             */
+20 ST OPT NO_RPT   	/* 11 Batch Control ID          */
+20 ST OPT NO_RPT   	/* 12 Reference Batch Cntrl ID  */
+BHS
+
+10 ST OPT NO_RPT	/* 1  Batch Message Count       */
+80 ST OPT NO_RPT	/* 2  Batch Comment             */
+100 CM OPT NO_RPT	/* 3  Batch Totals              */
+BTS
+
+80 ID REQ NO_MAX 	/* 1  Error Code and Location   */
+ERR
+
+1 ST REQ NO_RPT 	/* 1  File Field Separators     */
+4 ST REQ NO_RPT		/* 2  File Encoding Characters  */
+15 ST OPT NO_RPT	/* 3  File Sending Application  */
+20 ST OPT NO_RPT  	/* 4  File Sending Facility     */
+15 ST OPT NO_RPT  	/* 5  File Rcving Application   */
+20 ST OPT NO_RPT  	/* 6  File Receiving Facility   */
+19 TS OPT NO_RPT  	/* 7  File Creation Date/Time   */
+40 ST OPT NO_RPT  	/* 8  File Security             */
+20 ST OPT NO_RPT  	/* 9  File Name/ID/Type         */
+80 ST OPT NO_RPT  	/* 10 File Comment              */
+20 ST OPT NO_RPT	/* 11 File Control ID           */
+20 ST OPT NO_RPT	/* 12 Reference File Cntrl ID   */
+FHS
+
+10 ST OPT NO_RPT  	/* 1  File Batch Count          */
+80 CM OPT NO_RPT   	/* 2  File Trailer Comment      */
+FTS
+
+4 SI OPT NO_RPT   	/* 1  Set ID                    */
+8 ID OPT NO_RPT   	/* 2  Source of Comment         */
+120 TX REQ NO_MAX  	/* 3  Comment                   */
+NTE
+
+15 CM OPT NO_RPT   	/* 1  When to Charge            */
+50 CM OPT NO_RPT   	/* 2  Value Type                */
+100 CM OPT NO_RPT   	/* 3  Observation Identifier    */
+BLG
+
+2 ST REQ NO_RPT   	/* 1  Order Control             */
+75 CM OPT NO_RPT   	/* 2  Placer Order #            */
+75 CM OPT NO_RPT   	/* 3  Filler Order #            */
+75 CM OPT NO_RPT   	/* 4  Placer Order #            */
+2 ST OPT NO_RPT   	/* 5  Order Status              */
+200 ST OPT NO_RPT 	/* 6  Response Flag             */
+200 CM OPT NO_RPT	/* 7  Timing/Quantity           */
+19 CM OPT NO_RPT	/* 8  Parent                    */
+80 TS OPT NO_RPT	/* 9  Date/Time of Transaction  */
+80 CN OPT NO_RPT	/* 10 Enterted BY               */
+80 CN OPT NO_RPT	/* 11 Verified By               */
+80 CN OPT NO_RPT	/* 12 Ordering Provider         */
+80 CM OPT NO_RPT	/* 13 Enterer's Location        */
+40 TN OPT      2	/* 14 Call Back Phone Number    */
+ORC
+
+200 CE OPT NO_RPT   	/* 1  Order Item Id             */
+1 ID OPT NO_RPT   	/* 2  Substitute Allowed        */
+80 CN OPT NO_MAX   	/* 3  Results Copied To         */
+2 ID OPT NO_RPT   	/* 4  Stock Location            */
+ORO
+
+0 UN OPT NO_RPT   	/* 1  Unused                    */
+0 UN OPT NO_RPT   	/* 2  Unused                    */
+8 ST OPT NO_RPT   	/* 3  Route                     */
+20 ST OPT NO_RPT   	/* 4  Site Administered         */
+10 CQ OPT NO_RPT   	/* 5  IV Solution Rate          */
+14 CQ OPT NO_RPT   	/* 6  Drug Strength             */
+10 NM OPT NO_RPT   	/* 7  Final Concentration       */
+10 NM OPT NO_RPT   	/* 8  Final Volume in Ml.       */
+10 CM OPT NO_RPT   	/* 9  Drug Dose                 */
+1 ID OPT NO_RPT   	/* 10 Drug Role                 */
+3 NM OPT NO_RPT   	/* 11 Prescription Sequence Num */
+4 CQ OPT NO_RPT   	/* 12 Quantity Dispensed        */
+0 UN OPT NO_RPT   	/* 13 Unused                    */
+5 CE OPT NO_RPT   	/* 14 Drug ID                   */
+5 ID OPT      5   	/* 15 Component Drug IDs        */
+2 ID OPT NO_RPT   	/* 16 Prescription Type         */
+1 ID OPT NO_RPT   	/* 17 Substitution Status       */
+2 ID OPT NO_RPT   	/* 18 Rx Order Status           */
+3 NM OPT NO_RPT   	/* 19 Number of Refills         */
+0 UN OPT NO_RPT   	/* 20 Unused                    */
+3 NM OPT NO_RPT   	/* 21 Refills Remaining         */
+5 ID OPT NO_RPT   	/* 22 DEA Class                 */
+10 NM OPT NO_RPT   	/* 23 Ordering Md's DEA Number  */
+0  UN OPT NO_RPT   	/* 24 Unused                    */
+19 TS OPT NO_RPT   	/* 25 Last Refill Date/Time     */
+20 ST OPT NO_RPT   	/* 26 RX Number                 */
+5 ID OPT NO_RPT   	/* 27 PRN Status                */
+80 TX OPT     5   	/* 28 Pharmacy Instructions     */
+80 TX OPT     5   	/* 29 Patient Instruction       */
+500 TX OPT NO_MAX   	/* 30 Instructions (SIG)        */
+RX1
+
+60 TYPE_ST OPT NO_RPT   /* 1  Continuation Pointer      */
+DSC
+
+4 TYPE_SI OPT NO_RPT   	/* 1  Set ID - Display Data     */
+4 TYPE_SI OPT NO_RPT   	/* 2  Display Level             */
+300 TYPE_TX REQ NO_RPT  /* 3  Data Line                 */
+2 TYPE_ST OPT NO_RPT   	/* 4  Logical Break Point       */
+20 TYPE_TX OPT NO_RPT   /* 5  Result ID                 */
+DSP
+
+19 TYPE_TS REQ NO_RPT   /* 1  Query Date/Time           */
+1 TYPE_ID REQ NO_RPT   	/* 2  Query Format Code         */
+1 TYPE_ID REQ NO_RPT   	/* 3  Query Priority            */
+10 TYPE_ST REQ NO_RPT   /* 4  Query ID                  */
+1 TYPE_ID OPT NO_RPT   	/* 5  Deferred Response Type    */
+19 TYPE_TS OPT NO_RPT   /* 6  Def. Resp. Date/Time      */
+5 TYPE_CQ REQ NO_RPT   	/* 7  Quantity Limited Request  */
+20 TYPE_ST REQ NO_MAX   /* 8  Who Subject Filter        */
+3 TYPE_ID REQ NO_MAX   	/* 9  What Subject Filter       */
+20 TYPE_ST REQ NO_MAX   /* 10 What Dept. Data Code      */
+20 TYPE_ST OPT NO_MAX   /* 11 What data Cd. Value Qua.  */
+1 TYPE_ID OPT NO_RPT   	/* 12 Query Results Level       */
+QRD
+
+20 TYPE_ST REQ NO_MAX   /* 1  Where Subject Filter      */
+19 TYPE_TS OPT NO_RPT   /* 2  When Data Start Date/Time */
+19 TYPE_TS OPT NO_RPT   /* 3  When Data End Date/Time   */
+20 TYPE_ST OPT NO_MAX   /* 4  What User Qualifier       */
+20 TYPE_ST OPT NO_MAX   /* 5  Other Qry Subject Filter  */
+QRF
+19 TYPE_SI OPT NO_RPT   /* 1  R/U Date/Time             */
+1 TYPE_CK OPT NO_RPT   	/* 2  Report Priority           */
+20 TYPE_CK REQ NO_MAX   /* 3  R/U Who Subject Defnition */
+3 TYPE_ST OPT NO_MAX   	/* 4  R/U What Subject Defntion */
+20 TYPE_PN OPT NO_MAX   /* 5  R/U What Department Code  */
+20 TYPE_ST OPT NO_MAX   /* 6  R/U Display/Print Locs    */
+1 TYPE_DT OPT NO_RPT   	/* 7  R/U Results Level         */
+URD
+
+20 TYPE_ST REQ NO_MAX   /* 1  R/U Where Subject Def.    */
+19 TYPE_TS OPT NO_RPT   /* 2  R/U When Start Dte/Tme    */
+19 TYPE_TS OPT NO_RPT   /* 3  R/U When End Dte/Tme      */
+20 TYPE_ST OPT NO_MAX   /* 4  R/U What User Qualifier   */
+20 TYPE_ST OPT NO_MAX   /* 5  R/U Oth Results Def.      */
+URS
