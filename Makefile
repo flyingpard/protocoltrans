@@ -1,18 +1,32 @@
-hl7_con: hl7_con.o hl7_api.o iniparser.o dictionary.o decode.o
-	cc -g -o hl7_con hl7_con.o hl7_api.o iniparser.o dictionary.o decode.o
-	chmod ugo=rx,u+w hl7_con
+CFLAGS = -g
 
-hl7_api.o: hl7_api.c hl7_api.h
-	cc -c hl7_api.c
+OBJS = hl7_con.o hl7_api.o iniparser.o dictionary.o decode.o
 
-hl7_con.o: hl7_con.c hl7_api.h hl7_con.h iniparser.h decode.h
-	cc -c -g hl7_con.c
+SRCPATH = src/
 
-decode.o: decode.c decode.h hl7_con.h
-	cc -c -g decode.c
+default: build
 
-iniparser.o: iniparser.c dictionary.h iniparser.h 
-	cc -c -g iniparser.c 
+build: hl7_con
 
-dictionary.o: dictionary.c dictionary.h
-	cc -c -g dictionary.c
+hl7_con: $(OBJS)
+	cc $(CFLAGS) -o $@ $^
+	@(chmod ugo=rx,u+w $@)
+
+hl7_api.o: $(SRCPATH)hl7_api.c $(SRCPATH)hl7_api.h
+	cc -c $(CFLAGS) $(SRCPATH)hl7_api.c
+
+hl7_con.o: $(SRCPATH)hl7_con.c $(SRCPATH)hl7_api.h $(SRCPATH)hl7_con.h $(SRCPATH)iniparser.h $(SRCPATH)decode.h
+	cc -c $(CFLAGS) $(SRCPATH)hl7_con.c
+
+decode.o: $(SRCPATH)decode.c $(SRCPATH)decode.h $(SRCPATH)hl7_con.h
+	cc -c $(CFLAGS) $(SRCPATH)decode.c
+
+iniparser.o: $(SRCPATH)iniparser.c $(SRCPATH)dictionary.h $(SRCPATH)iniparser.h 
+	cc -c $(CFLAGS) $(SRCPATH)iniparser.c 
+
+dictionary.o: $(SRCPATH)dictionary.c $(SRCPATH)dictionary.h
+	cc -c $(CFLAGS) $(SRCPATH)dictionary.c
+
+clean:
+	rm -f *.o
+	rm -f hl7_com
