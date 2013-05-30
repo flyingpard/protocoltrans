@@ -13,7 +13,7 @@
 
 #include "hl7_con.h"
 
-int main() {
+int main(int argc, char** argv) {
   HL7MSG *pMsg=0;
   HL7FLVR *pF;
   SIZE Len;
@@ -66,7 +66,14 @@ int main() {
   HL7PutFld(pMsg, patientinfo->str_address, 11);
 
   //Read date from source message
-  OBR *p_curobr = Decode("msg.msg", "config/overall.ini");
+  OBR *p_curobr;
+
+  if(argc ==3) {
+    p_curobr = Decode( argv[1], argv[2] );
+  }
+  else {
+    p_curobr = Decode("msg.msg", "config/overall.ini");
+  }
 
   //Insert and fill OBR
   HL7InsSegm(pMsg, "OBR");
