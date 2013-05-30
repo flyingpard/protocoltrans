@@ -13,12 +13,25 @@
 
 #include "hl7_con.h"
 
+static char* message_file_name = NULL;
+static char* rule_file_name = NULL;
+static char* output_file_name = NULL;
+
+static struct option const long_options[] = {
+  { "message", required_argument, NULL, 'm'},
+  { "rule", required_argument, NULL, 'r'},
+  { "output", required_argument, NULL, 'o'},
+  { NULL,0,NULL,0 }
+};
+
 int main(int argc, char** argv) {
   HL7MSG *pMsg=0;
   HL7FLVR *pF;
   SIZE Len;
   FILE *fp;
   char str_test[10000];
+
+  decode_switches( argc, argv );
 
   // read in and build tables
   pF = HL7Init( "", ".v26");
@@ -68,12 +81,13 @@ int main(int argc, char** argv) {
   //Read date from source message
   OBR *p_curobr;
 
-  if(argc ==3) {
-    p_curobr = Decode( argv[1], argv[2] );
+  if( message_file_name == NULL ) {
+    message_file_name = "msg.msg";
   }
-  else {
-    p_curobr = Decode("msg.msg", "config/overall.ini");
+  if( rule_file_name == NULL ) {
+    rule_file_name = "config/overall.ini";
   }
+  p_curobr = Decode( message_file_name, rule_file_name);
 
   //Insert and fill OBR
   HL7InsSegm(pMsg, "OBR");
@@ -103,7 +117,11 @@ int main(int argc, char** argv) {
 
   //Write to file
   HL7WriteMsg(pMsg, str_test, 10000, &Len);
-  if ((fp=fopen("ORU.hl7","w"))==NULL) {
+  if (output_file_name == NULL) {
+    output_file_name = "ORU.hl7";
+  }
+  
+  if ((fp=fopen(output_file_name,"w"))==NULL) {
     printf("cannot open file!");
     exit(0);
   }
@@ -123,7 +141,7 @@ int main(int argc, char** argv) {
     free(temp);
   }
 
-  printf("convert success, result saved in ORU.hl7.\n");
+  printf("convert success, result saved in %s.\n",output_file_name);
 
   return 0;
 }
@@ -218,5 +236,30 @@ int GetCurTimeFmt(char *FmtTime) {
   CurTime = localtime(TimeSec);
   strftime( FmtTime, 100, "%Y%m%d%H%M%S%z", CurTime);
   free(TimeSec);
+  return 0;
+}
+
+static int decode_switches( int argc, char** argv ) {
+  for(;;) {
+    int oi = -1;
+    int c = getopt_long(argc, argv, "mro", long_options, &oi);
+
+    if( c == -1 ) 
+      break;
+
+    switch(c) {
+    case 'm':
+      message_file_name = *(argv + optind);
+      break;
+
+    case 'r':
+      rule_file_name = *(argv + optind);
+      break;
+
+    case 'o':
+      output_file_name = *(argv + optind);
+      break;
+    }
+  }
   return 0;
 }

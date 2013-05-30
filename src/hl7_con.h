@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <time.h>
+#include <getopt.h>
 
 #include "iniparser.h"
 #include "decode.h"
@@ -48,5 +49,7 @@ GenConf* GetGenConf( char *filename );
 Patient* GetPatientInfo( char *filename );
 
 int GetCurTimeFmt(char *FmtTime);
+
+static int decode_switches( int argc, char** argv );
 
 #endif
