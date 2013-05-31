@@ -25,13 +25,19 @@ static struct option const long_options[] = {
 };
 
 int main(int argc, char** argv) {
+  decode_switches( argc, argv );
+  construct_message();
+
+  printf("convert success, result saved in %s.\n",output_file_name);
+  return 0;
+}
+
+int construct_message() {
   HL7MSG *pMsg=0;
   HL7FLVR *pF;
   SIZE Len;
   FILE *fp;
   char str_test[10000];
-
-  decode_switches( argc, argv );
 
   // read in and build tables
   pF = HL7Init( "", ".v26");
@@ -140,8 +146,6 @@ int main(int argc, char** argv) {
     p_curobx = p_curobx->p_next;
     free(temp);
   }
-
-  printf("convert success, result saved in %s.\n",output_file_name);
 
   return 0;
 }

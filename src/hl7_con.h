@@ -44,6 +44,8 @@ typedef struct patient{
   char *str_address;
 } Patient;
 
+int construct_message();
+
 GenConf* GetGenConf( char *filename );
 
 Patient* GetPatientInfo( char *filename );
