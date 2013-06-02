@@ -37,7 +37,11 @@ OBR * Decode(const char * msgfile, const char * rulefile) {
   int idposition;
   idposition = iniparser_getint(overallrule,"overall:idposition",-1);
 
-  int id = (int)msgbuf[idposition];
+  int idsize;
+  idsize = iniparser_getint(overallrule,"overall:idsize",-1);
+
+  int id;
+  id = readint(&msgbuf[idposition],idsize,isLittleEndian);
   
   char ids[IDLENGTH];
   sprintf(ids,"%d",id);
