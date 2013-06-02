@@ -32,7 +32,7 @@ OBR * Decode(const char * msgfile, const char * rulefile) {
   overallrule = iniparser_load(rulefile);
 
   int isLittleEndian;
-  isLittleEndian = iniparser_getint(overallrule,"overall:littleendian",1);
+  isLittleEndian = iniparser_getboolean(overallrule,"overall:littleendian",1);
 
   int idposition;
   idposition = iniparser_getint(overallrule,"overall:idposition",-1);
@@ -157,22 +157,20 @@ int ini_getint(dictionary * d, const char *sec, const char *key, int def) {
 int readint(unsigned char * start, int size, int isLittleEndian) {
   int result = 0;
   int i;
-  if(isLittleEndian != 0) {
+  if(isLittleEndian) {
     start += size;
     for(i=0;i<size;i++) {
       start--;
-      result += (int)*start;
       result <<= 8;
+      result += (int)*start;
     }
-    result >>= 8;
   }
   else {
     for(i=0;i<size;i++) {
-      result += (int)*start;
       result <<= 8;
+      result += (int)*start;
       start++;
     }
-    result >>= 8;
   }
   return result;
 }
