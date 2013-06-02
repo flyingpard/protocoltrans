@@ -49,6 +49,10 @@ OBR * GetOBR();
  */
 OBR * Decode(const char * msgfile, const char * rulefile);
 
+void setOBR(OBR * obr, unsigned char* msgbuf, dictionary *specrule, const char* secname);
+
+OBX * getOBX(unsigned char* msgbuf, dictionary *specrule, const char * secname, int setID);
+
 int readint(unsigned char * start, int size, int isLittleEndian);
 
 /**

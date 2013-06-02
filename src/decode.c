@@ -18,6 +18,8 @@
 #include "iniparser.h"
 #include "decode.h"
 
+static int isLittleEndian;
+
 OBR * Decode(const char * msgfile, const char * rulefile) {
   //Read the source message
   FILE * pmsg;
@@ -31,7 +33,6 @@ OBR * Decode(const char * msgfile, const char * rulefile) {
   dictionary * overallrule;
   overallrule = iniparser_load(rulefile);
 
-  int isLittleEndian;
   isLittleEndian = iniparser_getboolean(overallrule,"overall:littleendian",1);
 
   int idposition;
@@ -73,45 +74,18 @@ OBR * Decode(const char * msgfile, const char * rulefile) {
     secname = iniparser_getsecname(specrule,i);
     char *position;
     position = ini_getstring(specrule, secname, "position", NULL);
-    if(position != NULL && strcmp(position,"OBX") == 0) {
-      OBX * curobx = (OBX*)malloc(sizeof(OBX));
+    //illegal section
+    if(position == NULL) {
+      continue;
+    }
+    else if(strcmp(position,"OBR") == 0) {
+      setOBR(obr, msgbuf, specrule, secname);
+    }
+    else if(strcmp(position,"OBX") == 0) {
+      OBX * curobx = getOBX(msgbuf, specrule, secname, setID);
       *nextobx = curobx;
       nextobx = &(curobx->p_next);
-
-      char * setids = (char*)malloc(sizeof(char[IDLENGTH]));
-      sprintf(setids, "%d", setID);
-      curobx->str_setID = setids;
       setID++;
-
-      int startpoint;
-      startpoint = ini_getint(specrule, secname, "startpoint", -1);
-      int size;
-      size = ini_getint(specrule, secname, "size", -1);
-      int value;
-      value = readint(&msgbuf[startpoint],size,isLittleEndian);
-      char *values = (char*)malloc(sizeof(char[IDLENGTH]));
-      sprintf(values, "%d", value);
-      curobx->str_value = values;
-
-      char * valuetype;
-      valuetype = ini_getstring(specrule, secname, "valuetype", NULL);
-      curobx->str_valueType = valuetype;
-
-      char * obsid;
-      obsid = ini_getstring(specrule, secname, "obsid", NULL);
-      curobx->str_obsID = obsid;
-
-      char * obssubid;
-      obssubid = ini_getstring(specrule, secname, "obssubid", NULL);
-      curobx->str_obsSubID = obssubid;
-
-      char * unit;
-      unit = ini_getstring(specrule, secname, "unit", NULL);
-      curobx->str_unit = unit;
-
-      char * resstatus;
-      resstatus = ini_getstring(specrule, secname, "resstatus", NULL);
-      curobx->str_resStatus = resstatus;
     }
   }
 
@@ -119,6 +93,50 @@ OBR * Decode(const char * msgfile, const char * rulefile) {
   *nextobx = NULL;
 
   return obr;
+}
+
+void setOBR(OBR * obr, unsigned char* msgbuf, dictionary *specrule, const char* secname) {
+  //TODO:write this function.
+}
+
+OBX * getOBX(unsigned char* msgbuf, dictionary *specrule, const char * secname, int setID) {
+  OBX * curobx = (OBX*)malloc(sizeof(OBX));
+
+  char * setids = (char*)malloc(sizeof(char[IDLENGTH]));
+  sprintf(setids, "%d", setID);
+  curobx->str_setID = setids;
+
+  int startpoint;
+  startpoint = ini_getint(specrule, secname, "startpoint", -1);
+  int size;
+  size = ini_getint(specrule, secname, "size", -1);
+  int value;
+  value = readint(&msgbuf[startpoint],size,isLittleEndian);
+  char *values = (char*)malloc(sizeof(char[IDLENGTH]));
+  sprintf(values, "%d", value);
+  curobx->str_value = values;
+
+  char * valuetype;
+  valuetype = ini_getstring(specrule, secname, "valuetype", NULL);
+  curobx->str_valueType = valuetype;
+
+  char * obsid;
+  obsid = ini_getstring(specrule, secname, "obsid", NULL);
+  curobx->str_obsID = obsid;
+
+  char * obssubid;
+  obssubid = ini_getstring(specrule, secname, "obssubid", NULL);
+  curobx->str_obsSubID = obssubid;
+
+  char * unit;
+  unit = ini_getstring(specrule, secname, "unit", NULL);
+  curobx->str_unit = unit;
+
+  char * resstatus;
+  resstatus = ini_getstring(specrule, secname, "resstatus", NULL);
+  curobx->str_resStatus = resstatus;
+
+  return curobx;
 }
 
 char * format_combined_key(const char * sec, const char * key) {
