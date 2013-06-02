@@ -23,7 +23,7 @@ OBR * Decode(const char * msgfile, const char * rulefile) {
   FILE * pmsg;
   pmsg = fopen(msgfile,"rb");
 
-  char msgbuf[MAXLENGTH];
+  unsigned char msgbuf[MAXLENGTH];
   fread(msgbuf,sizeof(char),MAXLENGTH,pmsg);
   fclose(pmsg);
 

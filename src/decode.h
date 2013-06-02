@@ -49,6 +49,8 @@ OBR * GetOBR();
  */
 OBR * Decode(const char * msgfile, const char * rulefile);
 
+int readint(unsigned char * start, int size, int isLittleEndian);
+
 /**
    @param   sec     Section name.
    @param   key     Key name.
