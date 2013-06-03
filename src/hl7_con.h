@@ -17,32 +17,11 @@
 #include <time.h>
 #include <getopt.h>
 
+#include "pttype.h"
 #include "iniparser.h"
-#include "decode.h"
 #include "hl7_api.h"
 
-//Struct to save the general config.
-typedef struct genconf{
-  char *str_sndapp;
-  char *str_sndfcl;
-  char *str_rcvapp;
-  char *str_rcvfcl;
-  char *str_curtime;
-  char *str_ver;
-} GenConf;
-
-//Struct to save the patient info.
-typedef struct patient{
-  char *str_PID;
-  char *str_PEID;
-  char *str_PIID;
-  char *str_APID;
-  char *str_patientname;
-  char *str_mothermaidenname;
-  char *str_birthdate;
-  char *str_sex;
-  char *str_address;
-} Patient;
+extern OBR * Decode(const char * msgfile, const char * rulefile);
 
 int construct_message();
 

@@ -11,32 +11,10 @@
 #define DECODE_H
 
 #include <stdlib.h>
-#include "iniparser.h"
+#include "pttype.h"
 
 #define MAXLENGTH 2000
 #define IDLENGTH 50
-
-//Node struct of linked table
-typedef struct obx{
-  char *str_setID;
-  char *str_valueType;
-  char *str_obsID;
-  char *str_obsSubID;
-  char *str_value;
-  char *str_unit;
-  char *str_resStatus;
-  struct obx * p_next;   //link to next node.
-} OBX;
-
-//Head struct of linked table
-typedef struct obr{
-  char *str_setID;
-  char *str_plaOrdNum;
-  char *str_filOrdNum;
-  char *str_USID;
-  char *str_obDate;
-  struct obx * p_first;  //link to first node.
-} OBR;
 
 OBR * GetOBR();
 
